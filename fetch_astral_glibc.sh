@@ -12,9 +12,15 @@ SRC_REPO="astral-sh/python-build-standalone"
   #Fetch Release Metadata
    for i in {1..5}; do
      #gh api "repos/${SRC_REPO}/releases" --paginate | jq . > "${TMPDIR}/RELEASES.json" && break
-     gh api "repos/${SRC_REPO}/releases" | jq . > "${TMPDIR}/RELEASES.json" && break
-     echo "Retrying... ${i}/5"
-     sleep 2
+     gh api "repos/${SRC_REPO}/releases" | jq . > "${TMPDIR}/RELEASES.json"
+      unset REL_COUNT ; REL_COUNT="$(jq -r '.. | objects | select(has("browser_download_url")) | .browser_download_url' "${TMPDIR}/RELEASES.json" | grep -iv 'null' | sort -u | wc -l | tr -d '[:space:]')"
+      if [[ "${REL_COUNT}" -le 10 ]]; then
+        echo "Retrying... ${i}/5"
+       sleep 2
+      elif [[ "${REL_COUNT}" -gt 10 ]]; then
+        unset REL_COUNT
+        break
+      fi
    done
   #Sanity Check URLs 
    REL_COUNT="$(jq -r '.. | objects | select(has("browser_download_url")) | .browser_download_url' "${TMPDIR}/RELEASES.json" | grep -iv 'null' | sort -u | wc -l | tr -d '[:space:]')"
