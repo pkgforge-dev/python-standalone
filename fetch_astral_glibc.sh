@@ -11,7 +11,8 @@ SRC_REPO="astral-sh/python-build-standalone"
  pushd "$(mktemp -d)" &>/dev/null && TMPDIR="$(realpath .)"
   #Fetch Release Metadata
    for i in {1..5}; do
-     gh api "repos/${SRC_REPO}/releases" --paginate | jq . > "${TMPDIR}/RELEASES.json" && break
+     #gh api "repos/${SRC_REPO}/releases" --paginate | jq . > "${TMPDIR}/RELEASES.json" && break
+     gh api "repos/${SRC_REPO}/releases" | jq . > "${TMPDIR}/RELEASES.json" && break
      echo "Retrying... ${i}/5"
      sleep 2
    done
