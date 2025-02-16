@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 ## <DO NOT RUN STANDALONE, meant for CI Only>
-## Produces: "/tmp/python-astral-glibc.tar"
+## Produces: "/tmp/python.tar"
 ## Self: https://raw.githubusercontent.com/pkgforge-dev/python-standalone/refs/heads/main/fetch_astral_glibc.sh
 # PARALLEL_LIMIT="20" bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge-dev/python-standalone/refs/heads/main/fetch_astral_glibc.sh")
 #-------------------------------------------------------#
 
 #-------------------------------------------------------#
-OUT_FILE="/tmp/python-astral-glibc.tar"
+OUT_FILE="/tmp/python.tar"
 SRC_REPO="astral-sh/python-build-standalone"
  pushd "$(mktemp -d)" &>/dev/null && TMPDIR="$(realpath .)"
   #Fetch Release Metadata

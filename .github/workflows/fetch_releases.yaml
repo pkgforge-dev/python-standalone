@@ -24,26 +24,26 @@ jobs:
           - title: "astral-glibc"
             script: "${GITHUB_WORKSPACE}/main/fetch_astral_glibc.sh"
             arch: "aarch64"
-            file: "/tmp/python-astral-glibc.tar"
+            file: "/tmp/python.tar"
             runner: "ubuntu-24.04-arm"
 
           - title: "astral-glibc"
             script: "${GITHUB_WORKSPACE}/main/fetch_astral_glibc.sh"
             arch: "x86_64"
-            file: "/tmp/python-astral-glibc.tar"
+            file: "/tmp/python.tar"
             runner: "ubuntu-latest"
 
           #No musl builds yet
           #- title: "astral-musl"
           #  script: "${GITHUB_WORKSPACE}/main/fetch_astral_musl.sh"
           #  arch: "aarch64"
-          #  file: "/tmp/python-astral-musl.tar"
+          #  file: "/tmp/python.tar"
           #  runner: "ubuntu-24.04-arm"
 
           - title: "astral-musl"
             script: "${GITHUB_WORKSPACE}/main/fetch_astral_musl.sh"
             arch: "x86_64"
-            file: "/tmp/python-astral-musl.tar"
+            file: "/tmp/python.tar"
             runner: "ubuntu-latest"
 
     steps:
