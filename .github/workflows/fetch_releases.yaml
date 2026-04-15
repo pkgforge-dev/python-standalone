@@ -138,7 +138,7 @@ jobs:
      #continuous
       - name: Releaser (Continuous)
         if: env.HAS_RELEASE == 'TRUE'
-        uses: softprops/action-gh-release@v2.2.1
+        uses: softprops/action-gh-release@v2.6.2
         with:
           name: "Continuous ${{ matrix.title }}_${{ matrix.arch }}"
           tag_name: "${{ matrix.title }}_${{ matrix.arch }}"
@@ -153,7 +153,7 @@ jobs:
      #Snapshot
       - name: Releaser (Snapshot)
         if: env.HAS_RELEASE == 'TRUE'
-        uses: softprops/action-gh-release@v2.2.1
+        uses: softprops/action-gh-release@v2.6.2
         with:
           name: "Snapshot-(${{ matrix.title }}_${{ matrix.arch }}_${{ env.UTC_TIME }}"
           tag_name: "${{ matrix.title }}_${{ matrix.arch }}_${{ env.UTC_TIME }}"
